@@ -3,8 +3,6 @@ from crosscompute.types import DataType, DataTypeError
 
 class SelectType(DataType):
     suffixes = 'select'
-    # TODO: what is this
-    # formats = 'txt',
     template = 'crosscompute_select:type.jinja2'
 
     @classmethod
