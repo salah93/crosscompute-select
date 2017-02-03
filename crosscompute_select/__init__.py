@@ -13,7 +13,7 @@ class SelectType(DataType):
             *y
             *z
         """
-        all_options = [option.strip(' ,;') for option in text.split('\n')]
+        all_options = [option.strip(' ,;') for option in text.split('\n') if option.strip()]
         default_options = filter(lamda x: x[0] == '*', all_options) 
         # return all options, default options
         return all_options, default_options
