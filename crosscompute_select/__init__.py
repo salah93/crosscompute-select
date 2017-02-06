@@ -1,20 +1,32 @@
-from crosscompute.types import DataType, DataTypeError
+from crosscompute.types import DataType
 
 
 class SelectType(DataType):
-    suffixes = 'select'
+    suffixes = 'select',
     template = 'crosscompute_select:type.jinja2'
 
     @classmethod
     def parse(Class, text):
         """
-        x_select = 
+        x_select =
             x
-            *y
+            *y*
             *z
+            **
         """
-        all_options = [option.strip(' ,;') for option in text.split('\n') if option.strip()]
-        default_options = filter(lamda x: x[0] == '*', all_options) 
+        all_options = []
+        default_options = []
+        lines = text.strip().split('\n')
+        for option in lines: 
+            option = option.strip(' ,;\n')
+            if not option:
+                continue
+            if option[0] == '*' and option[-1] == '*':
+                option = option[1:-1].strip(' ,;')
+                if not option:
+                    continue
+                default_options.append(option)
+            all_options.append(option)
         # return all options, default options
         return all_options, default_options
 
