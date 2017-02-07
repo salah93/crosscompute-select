@@ -37,4 +37,4 @@ def test_format():
     text = '\n*2*\n5\n*4*\n6\n'
     result = SelectType.parse(text)
     formatted_result = SelectType.format(result)
-    assert text.strip('\n') == formatted_result
+    assert formatted_result == '\n    *2*\n    5\n    *4*\n    6\n'

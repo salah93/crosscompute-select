@@ -37,4 +37,4 @@ class SelectType(DataType):
             if option in selected_options:
                 option = '*%s*' % option
             all_options[i] = option
-        return '\n'.join(all_options)
+        return '\n    %s\n' % '\n    '.join(all_options)
