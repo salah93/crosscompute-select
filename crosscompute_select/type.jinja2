@@ -6,32 +6,28 @@
 {% macro head_script_inline(request) %}{% endmacro %}
 
 {% macro body_script_loaded(request) %}
-<script type='text/javascript' src="http://cdn.jsdelivr.net/select2/3.4.1/select2.min.js"></script>
+<script src="//cdn.jsdelivr.net/select2/3.4.1/select2.min.js"></script>
 {% endmacro %}
 
 {% macro body_script_inline(request) %}
-<script type='text/javascript'>
-$('.crosscompute-select-type').select2({
-  placeholder: "Choose Option",  
-});
+<script>
+$('.crosscompute-select-type').select2({});
 </script>
 {% endmacro %}
 
 {% macro render_argument(request, data_item) %}
 {% set key = data_item.key %}
-{% set all_options, default_options = data.value %}
-<select style='width: 100%;' id="{{ key }}" class="crosscompute-select-type" name="{{ key }}" multiple="multiple" >
-  {% for option in all_options %}
-    {% if option in default_options}
-      <option value="{{ option }}" selected='selected'>{{ option }}</option>
-    {% else %}
-      <option value="{{ option }}">{{ option }}</option>
-    {% endif %}
-  {% endfor %}
+{% set all_options, selected_options = data.value %}
+<select style="width: 100%;" id="{{ key }}" class="crosscompute-select-type" name="{{ key }}" multiple="multiple">
+{% for option in all_options %}
+{% if option in selected_options}
+<option value="{{ option }}" selected="selected">{{ option }}</option>
+{% else %}
+<option value="{{ option }}">{{ option }}</option>
+{% endif %}
+{% endfor %}
 </select>
 {% endmacro %}
 
 {% macro render_property(request, data_item, stamp='') %}
-{% set key = data_item.key + stamp %}
-<div id="{{ key }}">{{ data_item.value }}</div>
 {% endmacro %}
