@@ -9,11 +9,14 @@ class SelectType(DataType):
     @classmethod
     def parse(Class, text):
         """
+        selected options will have '*' surrounding it
+        other options will not
+
         x_select =
             x
             *y*
-            *z
-            **
+            *z*
+            a
         """
         all_options = []
         selected_options = []
@@ -36,6 +39,8 @@ class SelectType(DataType):
 
     @classmethod
     def format(Class, (all_options, selected_options)):
+        ''' change two lists into a single string of items seperated by
+            new lines (format and parse are inverses of eachother'''
         for i, option in enumerate(all_options):
             if option in selected_options:
                 option = '*%s*' % option
