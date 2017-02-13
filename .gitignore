@@ -10,3 +10,5 @@ dist
 # Vim
 *.sw[op]
 *~
+# ctags
+tags
