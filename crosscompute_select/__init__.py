@@ -31,8 +31,11 @@ class SelectType(DataType):
         return all_options, selected_options
 
     @classmethod
+    def merge(Class, old_value, new_value):
+        return old_value[0], new_value[0]
+
+    @classmethod
     def format(Class, (all_options, selected_options)):
-        # restar default options
         for i, option in enumerate(all_options):
             if option in selected_options:
                 option = '*%s*' % option
