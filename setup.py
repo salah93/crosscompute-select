@@ -11,7 +11,7 @@ DESCRIPTION = '\n\n'.join(open(join(FOLDER, x)).read().strip() for x in [
     'README.rst'])
 setup(
     name='crosscompute-select',
-    version='0.6.4',
+    version='0.6.4.1',
     description='Select tag data type plugin for CrossCompute',
     long_description=DESCRIPTION,
     classifiers=[
