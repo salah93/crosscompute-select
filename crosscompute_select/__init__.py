@@ -38,11 +38,14 @@ class SelectType(DataType):
         return old_value[0], new_value[0]
 
     @classmethod
-    def format(Class, (all_options, selected_options)):
-        ''' change two lists into a single string of items seperated by
+    def render(Class, (all_options, selected_options)):
+        ''' change two lists into a single string of items separated by
             new lines (format and parse are inverses of eachother'''
+        '''
         for i, option in enumerate(all_options):
             if option in selected_options:
                 option = '*%s*' % option
             all_options[i] = option
         return '\n    %s\n' % '\n    '.join(all_options)
+        '''
+        return '\n    %s\n' % '\n    '.join(selected_options)
