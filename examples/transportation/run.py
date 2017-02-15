@@ -14,4 +14,4 @@ if __name__ == '__main__':
 
     args = argument_parser.parse_args()
     print(type(args.mode))
-    print(args.mode)
+    print(args.mode.split('\n'))
