@@ -3,7 +3,7 @@ from crosscompute.types import DataType
 
 class SelectType(DataType):
 
-    suffixes = 'select',
+    suffixes = 'select', 'options'
     template = 'crosscompute_select:type.jinja2'
 
     @classmethod
