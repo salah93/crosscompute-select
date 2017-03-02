@@ -38,7 +38,8 @@ class SelectType(DataType):
         return old_value[0], new_value[0]
 
     @classmethod
-    def render(Class, (all_options, selected_options)):
+    def render(Class, value):
         ''' change two lists into a single string of items separated by
             new lines (format and parse are inverses of eachother'''
+        selected_options = value[1]
         return '\n'.join(selected_options)
