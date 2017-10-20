@@ -21,7 +21,7 @@ class SelectType(DataType):
         all_options = []
         selected_options = []
         lines = text.strip().split('\n')
-        for option in lines: 
+        for option in lines:
             option = option.strip(' ,;\n')
             if not option:
                 continue
@@ -31,6 +31,8 @@ class SelectType(DataType):
                     continue
                 selected_options.append(option)
             all_options.append(option)
+        if all_options and not selected_options:
+            selected_options.append(all_options[0])
         return all_options, selected_options
 
     @classmethod

@@ -1,18 +1,18 @@
-# test parsing
 from crosscompute_select import SelectType
+
 
 def test_spaces():
     text = '    \n    2   \n     5    \n'
     all_options, selected_options = SelectType.parse(text)
     assert all_options == ['2', '5']
-    assert selected_options == []
+    assert selected_options == ['2']
 
 
 def test_multi_newline():
     text = '\n\n2\n\n5\n\n4\n\n'
     all_options, selected_options = SelectType.parse(text)
     assert all_options == ['2', '5', '4']
-    assert selected_options == []
+    assert selected_options == ['2']
 
 
 def test_default():
