@@ -4,6 +4,7 @@ from crosscompute.types import DataType
 class SelectType(DataType):
 
     suffixes = 'select', 'options'
+    formats = 'txt',
     template = 'crosscompute_select:type.jinja2'
 
     @classmethod
