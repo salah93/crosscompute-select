@@ -1,3 +1,7 @@
+America/Los_Angeles
+America/New_York
+Pacific/Honolulu
+
 Africa/Casablanca
 Africa/Ceuta
 Africa/Conakry
@@ -118,7 +122,7 @@ America/Kentucky/Monticello
 America/Kralendijk
 America/La_Paz
 America/Lima
-*America/Los_Angeles*
+America/Los_Angeles
 America/Lower_Princes
 America/Maceio
 America/Managua
@@ -137,7 +141,7 @@ America/Monterrey
 America/Montevideo
 America/Montserrat
 America/Nassau
-*America/New_York*
+America/New_York
 America/Nipigon
 America/Nome
 America/Noronha
@@ -389,7 +393,7 @@ Pacific/Galapagos
 Pacific/Gambier
 Pacific/Guadalcanal
 Pacific/Guam
-*Pacific/Honolulu*
+Pacific/Honolulu
 Pacific/Johnston
 Pacific/Kiritimati
 Pacific/Kosrae

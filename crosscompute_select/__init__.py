@@ -1,3 +1,4 @@
+from crosscompute.exceptions import DataTypeError
 from crosscompute.types import DataType
 
 
@@ -5,44 +6,31 @@ class SelectType(DataType):
 
     suffixes = 'select', 'options'
     formats = 'txt',
+    script = 'crosscompute_select:assets/part.min.js'
     template = 'crosscompute_select:type.jinja2'
 
     @classmethod
-    def parse(Class, text):
-        """
-        selected options will have '*' surrounding it
-        other options will not
-
-        x_select =
-            x
-            *y*
-            *z*
-            a
-        """
-        all_options = []
-        selected_options = []
-        lines = text.strip().split('\n')
-        for option in lines:
-            option = option.strip(' ,;\n')
-            if not option:
+    def parse(Class, x, default_value=None):
+        if isinstance(x, tuple):
+            return x
+        all_options, selected_options = [], []
+        xs = selected_options
+        for line in x.strip().splitlines():
+            line = line.strip()
+            if not line:
+                xs = all_options
                 continue
-            if option[0] == '*' and option[-1] == '*':
-                option = option[1:-1].strip(' ,;')
-                if not option:
-                    continue
-                selected_options.append(option)
-            all_options.append(option)
-        if all_options and not selected_options:
-            selected_options.append(all_options[0])
+            xs.append(line)
+        if default_value:
+            all_options = default_value[0]
+        elif not all_options:
+            all_options = selected_options
+        for x in selected_options:
+            if x not in all_options:
+                raise DataTypeError('invalid')
         return all_options, selected_options
 
     @classmethod
-    def merge(Class, old_value, new_value):
-        return old_value[0], new_value[0]
-
-    @classmethod
     def render(Class, value):
-        ''' change two lists into a single string of items separated by
-            new lines (format and parse are inverses of eachother'''
         selected_options = value[1]
         return '\n'.join(selected_options)
