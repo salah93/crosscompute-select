@@ -8,6 +8,7 @@ class SelectType(DataType):
     formats = 'txt',
     script = 'crosscompute_select:assets/part.min.js'
     template = 'crosscompute_select:type.jinja2'
+    requires_value_for_path = True
 
     @classmethod
     def parse(Class, x, default_value=None):
