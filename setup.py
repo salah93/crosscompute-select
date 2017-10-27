@@ -23,7 +23,7 @@ setup(
     author='Salah Ahmed',
     author_email='salah93@crosscompute.com',
     url='https://github.com/salah93/crosscompute-select',
-    keywords='web crosscompute',
+    keywords='web pyramid pylons crosscompute',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
