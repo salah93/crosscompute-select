@@ -1,22 +1,22 @@
 {% macro head_style_loaded(request) %}
-<link rel="stylesheet" href="//cdn.jsdelivr.net/select2/3.4.1/select2.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" />
 {% endmacro %}
 
 {% macro head_style_inline(request) %}{% endmacro %}
 {% macro head_script_inline(request) %}{% endmacro %}
 
 {% macro body_script_loaded(request) %}
-<script src="//cdn.jsdelivr.net/select2/3.4.1/select2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
 {% endmacro %}
 
 {% macro body_script_inline(request) %}
-$('.crosscompute-select-type').select2({});
+$('.crosscompute-select').select2({});
 {% endmacro %}
 
 {% macro render_argument(request, data_item) %}
 {% set key = data_item.key %}
 {% set all_options, selected_options = data_item.value %}
-<select style="width: 100%;" id="{{ key }}" class="crosscompute-select-type" name="{{ key }}" multiple="multiple">
+<select id="{{ key }}" class="crosscompute-select" multiple="multiple">
 {% for option in all_options %}
 {% if option in selected_options %}
 <option value="{{ option }}" selected="selected">{{ option }}</option>
@@ -25,6 +25,7 @@ $('.crosscompute-select-type').select2({});
 {% endif %}
 {% endfor %}
 </select>
+<input name="{{ key }}_txt" type="hidden">
 {% endmacro %}
 
 {% macro render_property(request, data_item, stamp='') %}

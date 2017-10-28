@@ -1,3 +1,6 @@
+# SQLite
+*.db
+*.db-journal
 # Python
 *.egg*
 *.py[co]
@@ -7,8 +10,12 @@
 __pycache__
 build
 dist
+# Transient
+*.log
+*.map
+*.tmp
+.sass-cache
+data_*
 # Vim
 *.sw[op]
 *~
-# ctags
-tags

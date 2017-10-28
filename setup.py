@@ -11,7 +11,7 @@ DESCRIPTION = '\n\n'.join(open(join(FOLDER, x)).read().strip() for x in [
     'README.rst'])
 setup(
     name='crosscompute-select',
-    version='0.6.7',
+    version='0.7.0',
     description='Select tag data type plugin for CrossCompute',
     long_description=DESCRIPTION,
     classifiers=[
@@ -23,14 +23,14 @@ setup(
     author='Salah Ahmed',
     author_email='salah93@crosscompute.com',
     url='https://github.com/salah93/crosscompute-select',
-    keywords='web crosscompute',
+    keywords='web pyramid pylons crosscompute',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
     setup_requires=[
-        'pytest-runner'
+        'pytest-runner',
     ],
     install_requires=[
-        'crosscompute>=0.6.7',
+        'crosscompute>=0.7.0',
     ],
     entry_points=ENTRY_POINTS)
