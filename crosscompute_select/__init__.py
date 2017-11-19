@@ -19,7 +19,7 @@ class SelectType(DataType):
         if default_value:
             all_options = default_value[0]
         elif not all_options:
-            all_options = selected_options
+            all_options, selected_options = selected_options, []
         for x in selected_options:
             if x not in all_options:
                 raise DataTypeError('invalid')
