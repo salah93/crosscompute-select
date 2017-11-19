@@ -1,4 +1,7 @@
 from sys import argv
 
-
-print('\n'.join(argv[1].splitlines()))
+modes = argv[1].splitlines()
+if len(modes) == 0:
+    print("I don't like to move")
+else:
+    print('I love to %s' % ' and '.join(modes))
