@@ -14,14 +14,8 @@ class SelectType(DataType):
     def parse(Class, x, default_value=None):
         if isinstance(x, tuple):
             return x
-        all_options, selected_options = [], []
-        xs = selected_options
-        for line in x.strip().splitlines():
-            line = line.strip()
-            if not line:
-                xs = all_options
-                continue
-            xs.append(line)
+        lines = [l.strip() for l in x.strip().splitlines()]
+        selected_options, all_options = Class.partition(lines, '')
         if default_value:
             all_options = default_value[0]
         elif not all_options:
@@ -35,3 +29,11 @@ class SelectType(DataType):
     def render(Class, value):
         selected_options = value[1]
         return '\n'.join(selected_options)
+
+    @classmethod
+    def partition(Class, l, pattern):
+        if pattern in l:
+            i = l.index(pattern)
+            return l[:i], l[i + 1:]
+        else:
+            return l, None
