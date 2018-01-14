@@ -19,7 +19,7 @@ class SelectType(DataType):
         if default_value:
             all_options = default_value[0]
         elif not all_options:
-            all_options, selected_options = selected_options, []
+            all_options = selected_options
         for x in selected_options:
             if x not in all_options:
                 raise DataTypeError('invalid')
@@ -32,8 +32,7 @@ class SelectType(DataType):
 
     @classmethod
     def partition(Class, l, pattern):
-        if pattern in l:
-            i = l.index(pattern)
-            return l[:i], l[i + 1:]
-        else:
-            return l, None
+        if pattern not in l:
+            return l, []
+        i = l.index(pattern)
+        return l[:i], l[i + 1:]
